@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tim — Portfolio (Copy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF6EE;
+    --ink: #171412;
+    --mint: #B7E4C7;
+    --peach: #FFC9A0;
+    --lav: #D7C4F2;
+    --sun: #FFE08A;
+    --sky: #AEE2F0;
+    --border: 4px solid var(--ink);
+    --shadow: 8px 8px 0 var(--ink);
+    --shadow-sm: 5px 5px 0 var(--ink);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+    background-image:
+      radial-gradient(circle, rgba(23,20,18,0.08) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #1C1815;
+      --ink: #F6EFE4;
+    }
+    body { background-image: radial-gradient(circle, rgba(246,239,228,0.08) 1px, transparent 1px); background-size:14px 14px; }
+  }
+  :root[data-theme="dark"] {
+    --cream: #1C1815;
+    --ink: #F6EFE4;
+  }
+
+  h1, h2, h3 { font-family: 'Archivo Black', sans-serif; line-height: 1.05; margin: 0; }
+
+  a { color: inherit; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- top bar ---------- */
+  header.bar {
+    border-bottom: var(--border);
+    background: var(--cream);
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+  }
+  .bar-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dots span {
+    width: 12px; height: 12px; border: 2px solid var(--ink); border-radius: 50%;
+    display: inline-block;
+  }
+  .dots span:nth-child(1) { background: var(--peach); }
+  .dots span:nth-child(2) { background: var(--sun); }
+  .dots span:nth-child(3) { background: var(--mint); }
+  nav.links { display: flex; gap: 18px; font-size: 0.85rem; }
+  nav.links a { text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+  nav.links a:hover { border-bottom: 2px solid var(--ink); }
+
+  /* ---------- panel primitive ---------- */
+  .panel {
+    border: var(--border);
+    background: var(--cream);
+    box-shadow: var(--shadow);
+  }
+  .panel-title {
+    border-bottom: var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+  }
+  .panel-title .dots span { width: 9px; height: 9px; }
+  .panel-body { padding: 24px; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 56px 0 40px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .hero-panel {
+    background: var(--sun);
+    transform: rotate(-1deg);
+  }
+  .hero-panel .panel-body { padding: 32px 28px; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    margin-bottom: 14px;
+  }
+  .hero p.tag {
+    font-size: 1.05rem;
+    max-width: 46ch;
+  }
+  .bubble {
+    margin-top: 20px;
+    background: var(--cream);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 12px 16px;
+    display: inline-block;
+    position: relative;
+    font-size: 0.85rem;
+    transform: rotate(1deg);
+  }
+  .bubble::after {
+    content: "";
+    position: absolute;
+    left: 24px;
+    bottom: -14px;
+    width: 0; height: 0;
+    border: 10px solid transparent;
+    border-top-color: var(--ink);
+  }
+  .bubble::before {
+    content: "";
+    position: absolute;
+    left: 27px;
+    bottom: -9px;
+    width: 0; height: 0;
+    border: 7px solid transparent;
+    border-top-color: var(--cream);
+    z-index: 1;
+  }
+
+  .hero-side {
+    background: var(--sky);
+    transform: rotate(1.2deg);
+  }
+  .hero-side .panel-body { padding: 22px; }
+  .stat-row { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 0.82rem; }
+  .stat-row:last-child { margin-bottom: 0; }
+  .stat-row b { font-family: 'Archivo Black', sans-serif; font-size: 1rem; display: block; }
+
+  /* ---------- section heading ---------- */
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin: 64px 0 24px; }
+  .sec-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .sec-head .num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    border: 2px solid var(--ink);
+    padding: 2px 8px;
+    background: var(--mint);
+  }
+
+  /* ---------- about ---------- */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .about-grid .panel:nth-child(2) { background: var(--lav); }
+  .taglist { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag-pill {
+    border: 2.5px solid var(--ink);
+    background: var(--peach);
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .about-grid .panel:nth-child(2) .tag-pill:nth-child(3n+1) { background: var(--sun); }
+  .about-grid .panel:nth-child(2) .tag-pill:nth-child(3n+2) { background: var(--sky); }
+
+  /* ---------- projects ---------- */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .proj-card { display: flex; flex-direction: column; height: 100%; }
+  .proj-card:nth-child(1) { transform: rotate(-0.6deg); }
+  .proj-card:nth-child(2) { transform: rotate(0.5deg); }
+  .proj-card:nth-child(3) { transform: rotate(0.4deg); }
+  .proj-card:nth-child(4) { transform: rotate(-0.4deg); }
+  .proj-thumb {
+    height: 120px;
+    border-bottom: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.4rem;
+  }
+  .proj-card:nth-child(1) .proj-thumb { background: var(--mint); }
+  .proj-card:nth-child(2) .proj-thumb { background: var(--peach); }
+  .proj-card:nth-child(3) .proj-thumb { background: var(--sky); }
+  .proj-card:nth-child(4) .proj-thumb { background: var(--sun); }
+  .proj-card .panel-body { flex: 1; display: flex; flex-direction: column; }
+  .proj-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .proj-card p { font-size: 0.85rem; flex: 1; }
+  .proj-meta {
+    margin-top: 14px;
+    font-size: 0.72rem;
+    border-top: 2px dashed var(--ink);
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ---------- skills ---------- */
+  .skills-panel { background: var(--mint); transform: rotate(-0.4deg); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  .skill-chip {
+    background: var(--cream);
+    border: 2.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-panel { background: var(--peach); transform: rotate(0.5deg); margin-bottom: 70px; }
+  .contact-panel .panel-body { text-align: left; padding: 36px 28px; }
+  .contact-panel h2 { font-size: clamp(1.5rem, 3.6vw, 2.2rem); margin-bottom: 10px; }
+  .btn-row { display: flex; gap: 14px; margin-top: 22px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 10px 20px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+  .btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--ink); }
+  .btn.alt { background: var(--cream); color: var(--ink); }
+
+  footer {
+    border-top: var(--border);
+    padding: 18px 0;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .hero-grid, .about-grid, .proj-grid { grid-template-columns: 1fr; }
+    nav.links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-inner">
+    <div class="brand">tim.exe</div>
+    <div class="dots"><span></span><span></span><span></span></div>
+    <nav class="links">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="panel hero-panel">
+        <div class="panel-title">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span>~/tim/about-me.txt</span>
+        </div>
+        <div class="panel-body">
+          <h1>Hi, I'm Tim.<br>I make websites that (mostly) don't break.</h1>
+          <p class="tag">Student developer in the Netherlands, currently building things in PHP and JavaScript — one automated test suite at a time.</p>
+          <div class="bubble">psst — scroll down, there's a whole comic strip about my code down there</div>
+        </div>
+      </div>
+
+      <div class="panel hero-side">
+        <div class="panel-title">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span>stats.log</span>
+        </div>
+        <div class="panel-body">
+          <div class="stat-row"><span>Coffee → code ratio</span><b>1 : 1</b></div>
+          <div class="stat-row"><span>Tests passing today</span><b>mostly</b></div>
+          <div class="stat-row"><span>Favorite era</span><b>1996</b></div>
+          <div class="stat-row"><span>Current status</span><b>debugging</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head">
+      <span class="num">01</span>
+      <h2>About the operator</h2>
+    </div>
+    <div class="about-grid">
+      <div class="panel">
+        <div class="panel-body">
+          <p>I'm a student at a coding college, working through structured web development assignments — the kind that get graded by a robot the second you hit submit. It's taught me to write code that's not just clever, but actually correct.</p>
+          <p>Outside of coursework I like building things with a bit of personality — interfaces that look like they came from a slightly different, more colorful timeline.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <h3 style="font-size:1rem; margin-bottom: 6px;">what I reach for</h3>
+          <div class="taglist">
+            <span class="tag-pill">PHP</span>
+            <span class="tag-pill">JavaScript</span>
+            <span class="tag-pill">HTML/CSS</span>
+            <span class="tag-pill">PHPUnit</span>
+            <span class="tag-pill">MySQL</span>
+            <span class="tag-pill">Git</span>
+            <span class="tag-pill">Regex (bravely)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head">
+      <span class="num">02</span>
+      <h2>Things I've shipped</h2>
+    </div>
+    <div class="proj-grid">
+
+      <article class="panel proj-card">
+        <div class="proj-thumb">🖥️</div>
+        <div class="panel-body">
+          <h3>Retro.Li</h3>
+          <p>A Macintosh-themed e-commerce webshop — dithered bitmap patterns, chunky window chrome, and a strict black-and-white aesthetic throughout.</p>
+          <div class="proj-meta"><span>e-commerce</span><span>solo project</span></div>
+        </div>
+      </article>
+
+      <article class="panel proj-card">
+        <div class="proj-thumb">🧪</div>
+        <div class="panel-body">
+          <h3>BLAST assignments</h3>
+          <p>A run of PHP coursework exercises — regex parsing, CLI argument handling, and chasing down PHPUnit failures until every test goes green.</p>
+          <div class="proj-meta"><span>PHP</span><span>coursework</span></div>
+        </div>
+      </article>
+
+      <article class="panel proj-card">
+        <div class="proj-thumb">📇</div>
+        <div class="panel-body">
+          <h3>Project three</h3>
+          <p>Swap this card for your next build — a short description of the problem it solved and what you used to solve it.</p>
+          <div class="proj-meta"><span>category</span><span>status</span></div>
+        </div>
+      </article>
+
+      <article class="panel proj-card">
+        <div class="proj-thumb">🎮</div>
+        <div class="panel-body">
+          <h3>Project four</h3>
+          <p>Another slot for a project — side project, hackathon entry, or something you built just to learn how it worked.</p>
+          <div class="proj-meta"><span>category</span><span>status</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <span class="num">03</span>
+      <h2>Toolbelt</h2>
+    </div>
+    <div class="panel skills-panel">
+      <div class="panel-body">
+        <div class="skills-grid">
+          <div class="skill-chip">PHP</div>
+          <div class="skill-chip">JavaScript</div>
+          <div class="skill-chip">HTML &amp; CSS</div>
+          <div class="skill-chip">MySQL</div>
+          <div class="skill-chip">PHPUnit</div>
+          <div class="skill-chip">Git &amp; GitHub</div>
+          <div class="skill-chip">REST APIs</div>
+          <div class="skill-chip">Debugging at 2am</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head">
+      <span class="num">04</span>
+      <h2>Say hello</h2>
+    </div>
+    <div class="panel contact-panel">
+      <div class="panel-body">
+        <h2>Got a project — or just want to talk retro UIs?</h2>
+        <p>Drop me a message and I'll get back to you, usually before my code finishes compiling.</p>
+        <div class="btn-row">
+          <a class="btn" href="mailto:tim@example.com">email me</a>
+          <a class="btn alt" href="#">view resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  built by tim · running on coffee and semicolons
+</footer>
+
+</body>
+</html>
