@@ -15,3 +15,9 @@ alles werkt
 
 Was er een fout en hoe heb je die opgelost?
 geen fout
+
+
+
+
+wat doet  add_theme_support( 'post-thumbnails' )
+het regristreert theme support voor een aangegeven functie. Dus hierbij thumbnails

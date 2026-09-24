@@ -1,9 +1,9 @@
 <?php
 get_header();
+?>
+wohh
+<?php
 
-while loop {
-    
-}
 
 get_footer();
 
