@@ -3,6 +3,7 @@ get_header();
 ?>
 
 <main id="main-content">
+		<section id="identifier">FrontPage</section>
 	<section class="hero-section">
 		<div class="container hero-grid">
 			<div class="hero-copy">

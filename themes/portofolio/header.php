@@ -7,6 +7,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+	<section id="Headeridentifier">Header</section>
 <a class="skip-link" href="#main-content"><?php esc_html_e( 'Spring naar de inhoud', 'portofolio' ); ?></a>
 <header class="site-header">
 	<div class="container header-inner">
