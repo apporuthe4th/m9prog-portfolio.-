@@ -1,0 +1,14 @@
+{
+  "name": "m9prog-portfolio.-",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {},
+  "devDependencies": {
+    "sass": "^1.107.1",
+    "sass-loader": "^17.1.0",
+    "webpack": "^5.112.2"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true
+  }
+}

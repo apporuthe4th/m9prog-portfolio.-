@@ -9,16 +9,20 @@ function portofolio_theme_setup() {
 }
 add_action( 'after_setup_theme', 'portofolio_theme_setup' );
 
-function portofolio_enqueue_styles() {
+function portofolio_enqueue_assets() {
 	wp_enqueue_style(
 		'portofolio-style',
-		get_stylesheet_uri(),
+		get_theme_file_uri( '/dist/main.css' ),
 		array(),
-		wp_get_theme()->get( 'Version' )
+		filemtime( get_theme_file_path( '/dist/main.css' ) )
+	);
+
+	wp_enqueue_script(
+		'portofolio-script',
+		get_theme_file_uri( '/dist/main.js' ),
+		array(),
+		filemtime( get_theme_file_path( '/dist/main.js' ) ),
+		true
 	);
 }
-
-// function wp_enqueue_script(){
-
-// }
-add_action( 'wp_enqueue_scripts', 'portofolio_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'portofolio_enqueue_assets' );

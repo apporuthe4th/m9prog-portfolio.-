@@ -1,0 +1,18 @@
+{
+  "name": "portofolio-theme",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.3.8",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.4",
+    "sass": "^1.107.1",
+    "sass-loader": "^17.1.0",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^6.0.1"
+  }
+}
