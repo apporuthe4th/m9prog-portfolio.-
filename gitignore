@@ -5,6 +5,7 @@ vendor/
 ### JetBrains
 .idea
 
+<<<<<<< HEAD
 ### Linux
 *~
 .Trash-*
@@ -32,5 +33,8 @@ $RECYCLE.BIN/
 .VolumeIcon.icns
 
 ### Application
+=======
+node_modules/
+>>>>>>> d357dd1c7121ccb57ce4a85a8e7ec050626caec0
 .env
 _sources
